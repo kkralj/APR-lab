@@ -1,4 +1,4 @@
-all: gradient_descent box limit_transform
+all: gradient_descent box newton_raphson limit_transform
 
 gradient_descent: gradient_descent.cpp
 	g++ gradient_descent.cpp function.cpp functions.cpp -o gradient_descent
