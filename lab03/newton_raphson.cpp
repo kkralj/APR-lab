@@ -193,20 +193,20 @@ std::vector<double> newton_raphson(std::vector<double> point, Function &f, bool 
 	int iter;
 	std::vector<double> x = point, grad;
 
-	for (iter = 0; iter < 1e3 && eucl_norm((grad = f.gradient_at(x))) > eps; iter++) {
+	for (iter = 1; iter <= 1e4; iter++) {
 		std::vector< std::vector<double> > H = f.hessian_at(x);
 		std::vector<double> G = f.gradient_at(x);
 
 		std::vector<double> hg = get_result(H, G);
-		std::vector<double> xj = x;
+		assert(x.size() == hg.size());
+		if (eucl_norm(hg) < eps) break;
 
-		assert(xj.size() == hg.size());
-		double lambda = golden ? golden_section_search_point(xj, hg, f) : -1;
-		for (int i = 0; i < xj.size(); i++) {
-			xj[i] += lambda * hg[i];
+		double lambda = golden ? golden_section_search_point(x, hg, f) : -1;
+		for (int i = 0; i < x.size(); i++) {
+			x[i] += lambda * hg[i];
 		}
-
-		x = xj;
+		//printf("lambda: %lf\n", lambda);
+		//print(x);
 	}
 
 	printf("Done after %d iterations.\n", iter);

@@ -28,7 +28,7 @@ std::vector< std::vector<double> > Function1::hessian_at(std::vector<double> x) 
 
 	double x1 = x[0], x2 = x[1];
 
-	h[0].push_back(-400 * (x2 - 3 * x1 * x1) - 2);
+	h[0].push_back(-400 * (x2 - 3 * x1 * x1) + 2);
 	h[0].push_back(-400 * x1);
 
 	h[1].push_back(200);

@@ -143,7 +143,6 @@ int main(void) {
 
 	// f1
 	Function1 f1;
-
 	limit1 l1;
 	limit2 l2;
 	std::vector<limit*> implicit_limits;
@@ -167,7 +166,6 @@ int main(void) {
 
 	// f2
 	Function2 f2;
-
 	std::vector<double> x2;
 	x2.push_back(0.1);
 	x2.push_back(0.3);

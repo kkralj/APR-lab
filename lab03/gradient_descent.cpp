@@ -94,32 +94,46 @@ void print(std::vector<double> &v) {
 	printf("\n");
 }
 
-std::vector<double> gradient_descent(Function &f, std::vector<double> x0, bool golden = false, double eps = 1e-6) {
+std::vector<double> gradient_descent(std::vector<double> x0, Function &f, bool golden = false, double eps = 1e-6) {
 	std::vector<double> grad, x = x0;
-	int iter = 250;
+	int iter;
 
-	while (iter > 0 && eucl_norm((grad = f.gradient_at(x))) > eps) {
+	for (iter = 1; iter <= 1e4 && eucl_norm((grad = f.gradient_at(x))) > eps; iter++) {
 		double lambda = golden ? golden_section_search_point(x, grad, f) : -1;
 		for (int i = 0; i < x.size(); i++) {
 			x[i] += lambda * grad[i];
 		}
-		iter--;
 		// print(x);
 	}
 
+	printf("Done after %d iterations.\n", iter);
 	return x;
 }
 
 int main() {
-	std::vector<double> x0;
-	x0.push_back(0);
-	x0.push_back(0);
+	// f1
+	Function1 f1;
+	std::vector<double> x1;
+	x1.push_back(-1.9);
+	x1.push_back(2);
+	std::vector<double> result1 = gradient_descent(x1, f1, true);
+	print(result1);
 
-	Function3 f;
+	// f2
+	Function2 f2;
+	std::vector<double> x2;
+	x2.push_back(0.1);
+	x2.push_back(0.3);
+	std::vector<double> result2 = gradient_descent(x2, f2, true);
+	print(result2);
 
-	std::vector<double> result = gradient_descent(f, x0, true);
-
-	print(result);
+	// f3
+	std::vector<double> x3;
+	x3.push_back(0);
+	x3.push_back(0);
+	Function3 f3;
+	std::vector<double> result3 = gradient_descent(x3, f3, true);
+	print(result3);
 
     return 0;
 }
