@@ -13,6 +13,16 @@ void print(std::vector<double> &v) {
 	printf("\n");
 }
 
+void print(std::vector< std::vector<double> > &v) {
+	for (int i = 0; i < v.size(); i++) {
+		for (int j = 0; j < v[i].size(); j++) {
+			printf("%lf ", v[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+
 double eucl_norm(std::vector<double> x) {
 	double val = 0;
 	for (int i = 0; i < x.size(); i++) {
@@ -193,7 +203,7 @@ std::vector<double> newton_raphson(std::vector<double> point, Function &f, bool 
 	int iter;
 	std::vector<double> x = point, grad;
 
-	for (iter = 1; iter <= 1e4; iter++) {
+	for (iter = 1; iter <= 1e3; iter++) {
 		std::vector< std::vector<double> > H = f.hessian_at(x);
 		std::vector<double> G = f.gradient_at(x);
 
@@ -201,10 +211,23 @@ std::vector<double> newton_raphson(std::vector<double> point, Function &f, bool 
 		assert(x.size() == hg.size());
 		if (eucl_norm(hg) < eps) break;
 
+		//printf("Trenutna tocka:\n");
+		//print(x);
+
+		//printf("Gradijent:\n");
+		//print(G);
+
+		//printf("Hessian:\n\n");
+		//print(H);
+
+		//printf("H^-1 * G:\n\n");
+		//print(hg);
+
 		double lambda = golden ? golden_section_search_point(x, hg, f) : -1;
 		for (int i = 0; i < x.size(); i++) {
 			x[i] += lambda * hg[i];
 		}
+
 		//printf("lambda: %lf\n", lambda);
 		//print(x);
 	}

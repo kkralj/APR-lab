@@ -3,7 +3,7 @@ all: gradient_descent box newton_raphson limit_transform
 gradient_descent: gradient_descent.cpp
 	g++ gradient_descent.cpp function.cpp functions.cpp -o gradient_descent
 
-newton_raphson: newton_raphson.cpp
+newton_raphson: newton_raphson.cpp functions.cpp
 	g++ newton_raphson.cpp function.cpp functions.cpp -o newton_raphson
 
 box: box.cpp limit.cpp
