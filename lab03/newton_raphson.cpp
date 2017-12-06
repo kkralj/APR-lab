@@ -211,18 +211,6 @@ std::vector<double> newton_raphson(std::vector<double> point, Function &f, bool 
 		assert(x.size() == hg.size());
 		if (eucl_norm(hg) < eps) break;
 
-		//printf("Trenutna tocka:\n");
-		//print(x);
-
-		//printf("Gradijent:\n");
-		//print(G);
-
-		//printf("Hessian:\n\n");
-		//print(H);
-
-		//printf("H^-1 * G:\n\n");
-		//print(hg);
-
 		double lambda = golden ? golden_section_search_point(x, hg, f) : -1;
 		for (int i = 0; i < x.size(); i++) {
 			x[i] += lambda * hg[i];

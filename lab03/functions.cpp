@@ -195,3 +195,45 @@ std::vector< std::vector<double> > LimitFunction2::hessian_at(std::vector<double
 
 	return h;
 }
+
+double LimitFunction3::value(std::vector<double> &x) {
+	assert(x.size() == 2);
+	double x1 = x[0], x2 = x[1];
+	return 3 - x1 - x2;
+}
+
+std::vector<double> LimitFunction3::gradient_at(std::vector<double> &x) {
+	return std::vector<double>(0);
+}
+
+std::vector< std::vector<double> > LimitFunction3::hessian_at(std::vector<double> x) {
+	return std::vector< std::vector<double> >(0);
+}
+
+double LimitFunction4::value(std::vector<double> &x) {
+	assert(x.size() == 2);
+	double x1 = x[0], x2 = x[1];
+	return 3 + 1.5 * x1 - x2;
+}
+
+std::vector<double> LimitFunction4::gradient_at(std::vector<double> &x) {
+	return std::vector<double>(0);
+}
+
+std::vector< std::vector<double> > LimitFunction4::hessian_at(std::vector<double> x) {
+	return std::vector< std::vector<double> >(0);
+}
+
+double LimitFunction5::value(std::vector<double> &x) {
+	assert(x.size() == 2);
+	double x1 = x[0], x2 = x[1];
+	return x2 - 1;
+}
+
+std::vector<double> LimitFunction5::gradient_at(std::vector<double> &x) {
+	return std::vector<double>(0);
+}
+
+std::vector< std::vector<double> > LimitFunction5::hessian_at(std::vector<double> x) {
+	return std::vector< std::vector<double> >(0);
+}
