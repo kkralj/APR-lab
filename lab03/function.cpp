@@ -1,5 +1,9 @@
 #include "function.h"
 #include <stdio.h>
+#include <math.h>
+
+const int INF = 1 << 30;
+
 Function::Function() {
 	calls = 0;
 	bias = 0;
@@ -30,4 +34,23 @@ void Function::reset_counter() {
 
 double Function::get_bias() {
 	return bias;
+}
+
+double Function::limit_value_at(std::vector<double> &x, double r, std::vector<Function*> &g, std::vector<Function*> &h) {
+	double g_vals_sum = 0, g_fn_val;
+
+	for (int i = 0; i < g.size(); i++) {
+		g_fn_val = g[i]->value_at(x);
+		if (g_fn_val <= 0) return INF;
+		g_vals_sum += log(g_fn_val);
+	}
+
+	double h_squared_sum = 0, h_val;
+
+	for (int i = 0; i < h.size(); i++) {
+		h_val = h[i]->value_at(x);
+		h_squared_sum += h_val * h_val;
+	}
+
+	return this->value_at(x) - r * g_vals_sum + (1.0 / r) * h_squared_sum;
 }

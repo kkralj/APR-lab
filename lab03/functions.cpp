@@ -133,3 +133,65 @@ std::vector< std::vector<double> > Function4::hessian_at(std::vector<double> x) 
 
 	return h;
 }
+
+double LimitFunction1::value(std::vector<double> &x) {
+	assert(x.size() == 2);
+	double x1 = x[0], x2 = x[1];
+	return x2 - x1;
+}
+
+std::vector<double> LimitFunction1::gradient_at(std::vector<double> &x) {
+	assert(x.size() == 2);
+	std::vector<double> result(2);
+
+	result[0] = -1;
+	result[1] = 1;
+
+	return result;
+}
+
+std::vector< std::vector<double> > LimitFunction1::hessian_at(std::vector<double> x) {
+	assert(x.size() == 2);
+	std::vector< std::vector<double> > h(2);
+
+	double x1 = x[0], x2 = x[1];
+
+	h[0].push_back(0);
+	h[0].push_back(0);
+
+	h[1].push_back(0);
+	h[1].push_back(0);
+
+	return h;
+}
+
+double LimitFunction2::value(std::vector<double> &x) {
+	assert(x.size() == 2);
+	double x1 = x[0], x2 = x[1];
+	return 2 - x1;
+}
+
+std::vector<double> LimitFunction2::gradient_at(std::vector<double> &x) {
+	assert(x.size() == 2);
+	std::vector<double> result(2);
+
+	result[0] = -1;
+	result[1] = 0;
+
+	return result;
+}
+
+std::vector< std::vector<double> > LimitFunction2::hessian_at(std::vector<double> x) {
+	assert(x.size() == 2);
+	std::vector< std::vector<double> > h(2);
+
+	double x1 = x[0], x2 = x[1];
+
+	h[0].push_back(0);
+	h[0].push_back(0);
+
+	h[1].push_back(0);
+	h[1].push_back(0);
+
+	return h;
+}

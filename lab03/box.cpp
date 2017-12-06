@@ -60,6 +60,7 @@ std::vector<double> box(std::vector<double> point, std::vector<double> xd, std::
 		X.push_back(xj);
 
 		// calculate new xc
+		xc = point;
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < X.size(); j++) {
 				xc[i] += X[j][i];

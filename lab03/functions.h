@@ -35,4 +35,20 @@ public:
 	std::vector< std::vector<double> > hessian_at(std::vector<double> x);
 };
 
+class LimitFunction1 : public Function {
+public:
+	LimitFunction1(double _bias = 0) : Function(_bias) {};
+	double value(std::vector<double> &x);
+	std::vector<double> gradient_at(std::vector<double> &x);
+	std::vector< std::vector<double> > hessian_at(std::vector<double> x);
+};
+
+class LimitFunction2 : public Function {
+public:
+	LimitFunction2(double _bias = 0) : Function(_bias) {};
+	double value(std::vector<double> &x);
+	std::vector<double> gradient_at(std::vector<double> &x);
+	std::vector< std::vector<double> > hessian_at(std::vector<double> x);
+};
+
 #endif
