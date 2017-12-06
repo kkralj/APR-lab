@@ -5,7 +5,7 @@
 
 #include "functions.h"
 
-void print(std::vector<double> &v) {
+void print(std::vector<double> v) {
 	for (int i = 0; i < v.size(); i++) {
 		printf("%lf ", v[i]);
 	}
@@ -27,7 +27,7 @@ std::vector<double> explore(std::vector<double> &xp, std::vector<double> &dx, Fu
 		double n = f.limit_value_at(x, r, g, h);
 		if (n > p) {
 			x[i] -= 2 * dx[i];
-			n = f.value_at(x);
+			n = f.limit_value_at(x, r, g, h);
 			if (n > p) {
 				x[i] += dx[i];
 			}
@@ -68,16 +68,6 @@ std::vector<double> hooke_jeeves(std::vector<double> &x0, Function &f, std::vect
 	return hooke_jeeves_solver(x0, dx, eps, f, g, h, r);
 }
 
-void print_hooke_jeeves_result(Function &f, std::vector<double> result) {
-	printf("Hooke-Jeeves done after %d calls.\n", f.get_call_count());
-	printf("Optimum point: [ ");
-	for (int i = 0; i < result.size(); i++) {
-		printf("%f ", result[i]);
-	}
-	printf("]\n");
-	f.reset_counter();
-}
-
 bool stop_condition(std::vector<double> &x1, std::vector<double> &x2, double eps = 1e-6) {
 	assert(x1.size() == x2.size());
 	for (int i = 0; i < x1.size(); i++) {
@@ -92,7 +82,6 @@ std::vector<double> limit_transform(std::vector<double> point, Function &f, std:
 	int iter;
 	for (iter = 0; iter < 100; iter++, t *= 10) {
 		xn = hooke_jeeves(x, f, g, h, 1.0 / t, eps);
-		// print(xn);
 		if (stop_condition(x, xn)) break;
 		x = xn;
 	}
@@ -146,6 +135,8 @@ int main() {
 
 	std::vector<double> sol4 = limit_transform(x4, f4, g4, h4);
 	print(sol4);
+
+	print(limit_transform(x4, f4, g4, h));
 
 	return 0;
 } 
