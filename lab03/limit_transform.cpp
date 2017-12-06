@@ -43,7 +43,6 @@ std::vector<double> hooke_jeeves_solver(std::vector<double> &x0, std::vector<dou
 		xn = explore(xp, dx, f, g, h, r);
 		double val_xn = f.limit_value_at(xn, r, g, h);
 		double val_xb = f.limit_value_at(xb, r, g, h);
-		//printf("%lf %lf\n", val_xn, val_xb );
 
 		if (val_xn < val_xb) {
 			for (int i = 0; i < xp.size(); i++) {
@@ -62,18 +61,22 @@ std::vector<double> hooke_jeeves_solver(std::vector<double> &x0, std::vector<dou
 std::vector<double> hooke_jeeves(std::vector<double> &x0, Function &f, std::vector<Function*> &g, std::vector<Function*> &h, double r, double epsval = 1e-6) {
 	std::vector<double> dx(x0.size());
 	std::vector<double> eps(x0.size());
+	
 	for (int i = 0; i < x0.size(); i++) {
 		dx[i] = 0.5;
 		eps[i] = epsval;
 	}
+	
 	return hooke_jeeves_solver(x0, dx, eps, f, g, h, r);
 }
 
 bool stop_condition(std::vector<double> &x1, std::vector<double> &x2, double eps = 1e-6) {
 	assert(x1.size() == x2.size());
+	
 	for (int i = 0; i < x1.size(); i++) {
 		if (abs(x1[i] - x2[i]) >= eps) return false;
 	}
+	
 	return true;
 }
 
@@ -109,7 +112,6 @@ std::vector<double> limit_transform(std::vector<double> point, Function &f, std:
 }
 
 int main() {
-
 	// Task 4.
 	LimitFunction1 l1;
 	LimitFunction2 l2;
@@ -123,15 +125,22 @@ int main() {
 	x1.push_back(-1.9);
 	x1.push_back(2);
 	Function1 f1;
+	printf("Starting point: [%lf %lf]\n", x1[0], x1[1]);
 	std::vector<double> sol1 = limit_transform(x1, f1, g, h);
 	print(sol1);
+	x1[0] = 1.5; x1[1] = 3;
+	printf("Starting point: [%lf %lf]\n", x1[0], x1[1]);
+	sol1 = limit_transform(x1, f1, g, h);
+	print(sol1);
 	printf("\n");
+	
 
 	// f2
 	std::vector<double> x2;
 	x2.push_back(0.1);
 	x2.push_back(0.3);
 	Function2 f2;
+	printf("Starting point: [%lf %lf]\n", x2[0], x2[1]);
 	std::vector<double> sol2 = limit_transform(x2, f2, g, h);
 	print(sol2);
 	printf("\n");
@@ -148,14 +157,12 @@ int main() {
 	h4.push_back(&l5);
 
 	std::vector<double> x4;
-	//x4.push_back(-0.9375);
-	//x4.push_back(-0.0625);
 
 	x4.push_back(5);
 	x4.push_back(5);
 
 	Function4 f4;
-
+	printf("Starting point: [%lf %lf]\n", x4[0], x4[1]);
 	std::vector<double> sol4 = limit_transform(x4, f4, g4, h4);
 	print(sol4);
 

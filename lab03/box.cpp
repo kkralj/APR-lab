@@ -24,10 +24,12 @@ bool valid_limits(std::vector<double> &v, std::vector<limit*> &implicit_limits) 
 
 double eucl_norm_diff(std::vector<double> &x1, std::vector<double> &x2) {
 	assert(x1.size() == x2.size());
+	
 	double val = 0;
 	for (int i = 0; i < x1.size(); i++) {
 		val += pow(x1[i] - x2[i], 2);
 	}
+	
 	return sqrt(val);
 }
 
@@ -45,7 +47,7 @@ std::vector<double> box(std::vector<double> point, std::vector<double> xd, std::
 	std::vector< std::vector<double> > X;
 
 	for (int i = 0; i < 2 * n; i++) {
-		// generate new valid point
+		//~ generate new point
 		std::vector<double> xj = xd;
 		for (int i = 0; i < n; i++) {
 			double R = (double)rand() / (double)RAND_MAX;
@@ -57,24 +59,26 @@ std::vector<double> box(std::vector<double> point, std::vector<double> xd, std::
 				xj[i] = (xj[i] + xc[i]) / 2.0;
 			}
 		}
+		
+		//~ save valid point
 		X.push_back(xj);
 
-		// calculate new xc
+		//~ calculate new xc
 		xc = point;
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < X.size(); j++) {
 				xc[i] += X[j][i];
 			}
-			xc[i] /= (1 + X.size()); // X.size() + starting point
+			xc[i] /= (1 + X.size());
 		}
 	}
 
 	int iter;
-	for (iter = 0; iter < 1e3; iter++) {
+	for (iter = 1; iter <= 1e3; iter++) {
 		int h = 0, h2 = 0;
 		double fh = f.value_at(X[0]), fh2 = fh;
 
-		// get h, h2
+		//~ get h, h2
 		for (int i = 1; i < X.size(); i++) {
 			double val = f.value_at(X[i]);
 			if (val > fh) {
@@ -88,7 +92,7 @@ std::vector<double> box(std::vector<double> point, std::vector<double> xd, std::
 			}
 		}
 
-		// xc without h
+		//~ xc without h
 		xc = std::vector<double>(n);
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < X.size(); j++) {
@@ -99,7 +103,7 @@ std::vector<double> box(std::vector<double> point, std::vector<double> xd, std::
 			xc[i] /= X.size() - 1;
 		}
 
-		// reflexion
+		//~ reflexion
 		std::vector<double> xr(n);
 		for (int i = 0; i < n; i++) {
 			xr[i] = (1 + alpha) * xc[i] - alpha * X[h][i];
@@ -124,7 +128,7 @@ std::vector<double> box(std::vector<double> point, std::vector<double> xd, std::
 
 		X[h] = xr;
 
-		// stop cond
+		//~ stop cond
 		bool done = true;
 		for (int i = 0; i < X.size(); i++) {
 			if (eucl_norm_diff(xc, X[i]) > eps) {
@@ -154,13 +158,8 @@ int main(void) {
 	x1.push_back(-1.9);
 	x1.push_back(2);
 
-	std::vector<double> xd;
-	xd.push_back(-100);
-	xd.push_back(-100);
-
-	std::vector<double> xg;
-	xg.push_back(100);
-	xg.push_back(100);
+	std::vector<double> xd(2, -100);
+	std::vector<double> xg(2, 100);
 
     std::vector<double> sol = box(x1, xd, xg, implicit_limits, f1);
     print(sol);
@@ -170,7 +169,6 @@ int main(void) {
 	std::vector<double> x2;
 	x2.push_back(0.1);
 	x2.push_back(0.3);
-
     sol = box(x2, xd, xg, implicit_limits, f2);
     print(sol);
 

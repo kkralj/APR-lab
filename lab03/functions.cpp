@@ -220,7 +220,6 @@ std::vector< std::vector<double> > GLimitFunction::hessian_at(std::vector<double
 
 double GLimitFunction::limit_value_at(std::vector<double> &x, double r, std::vector<Function*> &g, std::vector<Function*> &h) {
 	double value = 0, fn_val;
-	//printf("ja pozvan\n");
 
 	for (int i = 0; i < g.size(); i++) {
 		fn_val = g[i]->value_at(x);

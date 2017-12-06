@@ -22,7 +22,6 @@ void print(std::vector< std::vector<double> > &v) {
 	}
 }
 
-
 double eucl_norm(std::vector<double> x) {
 	double val = 0;
 	for (int i = 0; i < x.size(); i++) {
@@ -120,13 +119,14 @@ std::vector<double> backward_substitute(std::vector< std::vector<double> > &U, s
     return res;
 }
 
-// solve Hx=G	
+//~ solve Hx=G	
 std::vector<double> get_result(std::vector< std::vector<double> > &H, std::vector<double> &G) {
 	assert(H.size() > 0 && H[0].size() == G.size());
 
 	decompose(H);
 	std::vector<double> y = forward_substitute(H, G);
 	std::vector<double> x = backward_substitute(H, y);
+	
 	return x;
 }
 
@@ -164,7 +164,6 @@ double golden_section_search_interval(std::vector<double> &point, std::vector<do
 		}
 	}
 
-	// printf("Found best value: %lf\n", (a + b) / 2);
 	return (a + b) / 2;
 }
 
@@ -195,7 +194,6 @@ double golden_section_search_point(std::vector<double> &point, std::vector<doubl
 		} while (fm > fl);
 	}
 
-	//printf("Found unimodal interval: [%lf, %lf]\n", l, r);
 	return golden_section_search_interval(point, grad, l, r, f, eps);
 }
 
@@ -206,18 +204,17 @@ std::vector<double> newton_raphson(std::vector<double> point, Function &f, bool 
 	for (iter = 1; iter <= 1e3; iter++) {
 		std::vector< std::vector<double> > H = f.hessian_at(x);
 		std::vector<double> G = f.gradient_at(x);
+		std::vector<double> HG = get_result(H, G);
+		
+		assert(x.size() == HG.size());
+		if (eucl_norm(HG) < eps) break;
 
-		std::vector<double> hg = get_result(H, G);
-		assert(x.size() == hg.size());
-		if (eucl_norm(hg) < eps) break;
-
-		double lambda = golden ? golden_section_search_point(x, hg, f) : -1;
+		double lambda = golden ? golden_section_search_point(x, HG, f) : -1;
 		for (int i = 0; i < x.size(); i++) {
-			x[i] += lambda * hg[i];
+			x[i] += lambda * HG[i];
 		}
-
-		//printf("lambda: %lf\n", lambda);
-		//print(x);
+		//~ printf("lambda: %lf\n", lambda);
+		//~ print(x);
 	}
 
 	printf("Done after %d iterations.\n", iter);
@@ -230,15 +227,23 @@ int main(void) {
 	std::vector<double> x1;
 	x1.push_back(-1.9);
 	x1.push_back(2);
+	printf("Newton Raphson for function 1. Starting point [%lf %lf].\n", x1[0], x1[1]);
 	std::vector<double> result1 = newton_raphson(x1, f1, true);
+	printf("Function f evaluated %d times.\n", f1.get_call_count());
+	printf("Found solution: ");
 	print(result1);
+	
+	printf("\n");
 
 	// f2
 	Function2 f2;
 	std::vector<double> x2;
 	x2.push_back(0.1);
 	x2.push_back(0.3);
+	printf("Newton Raphson for function 2. Starting point [%lf %lf].\n", x2[0], x2[1]);
 	std::vector<double> result2 = newton_raphson(x2, f2, true);
+	printf("Function f evaluated %d times.\n", f2.get_call_count());
+	printf("Found solution: ");
 	print(result2);
 
 	return 0;
