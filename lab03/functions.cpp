@@ -203,3 +203,31 @@ std::vector<double> LimitFunction5::gradient_at(std::vector<double> &x) {
 std::vector< std::vector<double> > LimitFunction5::hessian_at(std::vector<double> x) {
 	return std::vector< std::vector<double> >(0);
 }
+
+double GLimitFunction::value(std::vector<double> &x) {
+	assert(x.size() == 2);
+	double x1 = x[0], x2 = x[1];
+	return x2 - 1;
+}
+
+std::vector<double> GLimitFunction::gradient_at(std::vector<double> &x) {
+	return std::vector<double>(0);
+}
+
+std::vector< std::vector<double> > GLimitFunction::hessian_at(std::vector<double> x) {
+	return std::vector< std::vector<double> >(0);
+}
+
+double GLimitFunction::limit_value_at(std::vector<double> &x, double r, std::vector<Function*> &g, std::vector<Function*> &h) {
+	double value = 0, fn_val;
+	//printf("ja pozvan\n");
+
+	for (int i = 0; i < g.size(); i++) {
+		fn_val = g[i]->value_at(x);
+		if (fn_val < 0) {
+			value -= fn_val;
+		}
+	}
+
+	return value;
+}

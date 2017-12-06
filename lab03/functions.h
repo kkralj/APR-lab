@@ -75,4 +75,14 @@ public:
 	std::vector< std::vector<double> > hessian_at(std::vector<double> x);
 };
 
+class GLimitFunction : public Function {
+public:
+	GLimitFunction(double _bias = 0) : Function(_bias) {};
+	double value(std::vector<double> &x);
+	std::vector<double> gradient_at(std::vector<double> &x);
+	std::vector< std::vector<double> > hessian_at(std::vector<double> x);
+	virtual double limit_value_at(std::vector<double> &x, double r, std::vector<Function*> &g, std::vector<Function*> &h);
+};
+
+
 #endif

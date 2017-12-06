@@ -18,7 +18,7 @@ public:
 	void reset_counter();
 	int get_call_count();
 	double get_bias();
-	double limit_value_at(std::vector<double> &x, double t, std::vector<Function*> &g, std::vector<Function*> &h);
+	virtual double limit_value_at(std::vector<double> &x, double t, std::vector<Function*> &g, std::vector<Function*> &h);
 };
 
 #endif 

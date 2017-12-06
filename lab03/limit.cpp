@@ -5,7 +5,6 @@
 bool limit::valid(std::vector<double> &point) {
 	return false;
 }
-
  
 bool limit1::valid(std::vector<double> &point) {
 	assert(point.size() == 2);
