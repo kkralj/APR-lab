@@ -7,6 +7,8 @@ const int INF = 1 << 30;
 Function::Function() {
 	calls = 0;
 	bias = 0;
+	gradient_calls = 0;
+	hessian_calls = 0;
 }
 
 double Function::value_at(double x) {
@@ -29,7 +31,23 @@ int Function::get_call_count() {
 }
 
 void Function::reset_counter() {
-	calls = 0;
+	calls = 0; gradient_calls = 0;
+}
+
+void Function::gradient_called() {
+	gradient_calls += 1;
+}
+
+int Function::get_gradient_calls() {
+	return gradient_calls;
+}
+
+void Function::hessian_called() {
+	hessian_calls += 1;
+}
+
+int Function::get_hessian_calls() {
+	return hessian_calls;
 }
 
 double Function::get_bias() {
@@ -54,3 +72,4 @@ double Function::limit_value_at(std::vector<double> &x, double r, std::vector<Fu
 
 	return this->value_at(x) - r * g_vals_sum + (1.0 / r) * h_squared_sum;
 }
+

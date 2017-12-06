@@ -219,7 +219,7 @@ std::vector<double> newton_raphson(std::vector<double> point, Function &f, bool 
 
 	printf("Done after %d iterations.\n", iter);
 	return x;
-} 
+}  
 
 int main(void) {
 	// f1
@@ -230,6 +230,8 @@ int main(void) {
 	printf("Newton Raphson for function 1. Starting point [%lf %lf].\n", x1[0], x1[1]);
 	std::vector<double> result1 = newton_raphson(x1, f1, true);
 	printf("Function f evaluated %d times.\n", f1.get_call_count());
+	printf("Gradient evaluated %d times.\n", f1.get_gradient_calls());
+	printf("Hessian evaluated %d times.\n", f1.get_hessian_calls());
 	printf("Found solution: ");
 	print(result1);
 	
@@ -243,6 +245,8 @@ int main(void) {
 	printf("Newton Raphson for function 2. Starting point [%lf %lf].\n", x2[0], x2[1]);
 	std::vector<double> result2 = newton_raphson(x2, f2, true);
 	printf("Function f evaluated %d times.\n", f2.get_call_count());
+	printf("Gradient evaluated %d times.\n", f2.get_gradient_calls());
+	printf("Hessian evaluated %d times.\n", f2.get_hessian_calls());
 	printf("Found solution: ");
 	print(result2);
 

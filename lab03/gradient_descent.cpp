@@ -117,6 +117,7 @@ int main() {
 	printf("Gradient descent for function 1. Starting point [%lf %lf].\n", x1[0], x1[1]);
 	std::vector<double> result1 = gradient_descent(x1, f1, true);
 	printf("Function f evaluated %d times.\n", f1.get_call_count());
+	printf("Gradient evaluated %d times.\n", f1.get_gradient_calls());
 	printf("Found solution: ");
 	print(result1);
 	
@@ -130,6 +131,7 @@ int main() {
 	printf("Gradient descent for function 2. Starting point [%lf %lf].\n", x2[0], x2[1]);
 	std::vector<double> result2 = gradient_descent(x2, f2, true);
 	printf("Function f evaluated %d times.\n", f2.get_call_count());
+	printf("Gradient evaluated %d times.\n", f2.get_gradient_calls());
 	printf("Found solution: ");
 	print(result2);
 	
@@ -143,6 +145,7 @@ int main() {
 	printf("Gradient descent for function 3 without optimal step. Starting point [%lf %lf].\n", x3[0], x3[1]);
 	std::vector<double> result3 = gradient_descent(x3, f3, false);
 	printf("Function f evaluated %d times.\n", f3.get_call_count());
+	printf("Gradient evaluated %d times.\n", f3.get_gradient_calls());
 	printf("Found solution: ");
 	print(result3);
 	
@@ -153,6 +156,7 @@ int main() {
 	printf("Gradient descent for function 3 with optimal step. Starting point [%lf %lf].\n", x3[0], x3[1]);
 	result3 = gradient_descent(x3, f3, true);
 	printf("Function f evaluated %d times.\n", f3.get_call_count());
+	printf("Gradient evaluated %d times.\n", f3.get_gradient_calls());
 	printf("Found solution: ");
 	print(result3);
 

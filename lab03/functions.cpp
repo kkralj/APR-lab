@@ -12,6 +12,7 @@ double Function1::value(std::vector<double> &x) {
 }
 
 std::vector<double> Function1::gradient_at(std::vector<double> &x) {
+	gradient_called();
 	assert(x.size() == 2);
 	std::vector<double> result(2);
 
@@ -23,6 +24,7 @@ std::vector<double> Function1::gradient_at(std::vector<double> &x) {
 }
 
 std::vector< std::vector<double> > Function1::hessian_at(std::vector<double> x) {
+	hessian_called();
 	assert(x.size() == 2);
 	std::vector< std::vector<double> > h(2);
 
@@ -44,6 +46,7 @@ double Function2::value(std::vector<double> &x) {
 }
 
 std::vector<double> Function2::gradient_at(std::vector<double> &x) {
+	gradient_called();
 	assert(x.size() == 2);
 	std::vector<double> result(2);
 
@@ -55,6 +58,7 @@ std::vector<double> Function2::gradient_at(std::vector<double> &x) {
 }
 
 std::vector< std::vector<double> > Function2::hessian_at(std::vector<double> x) {
+	hessian_called();
 	assert(x.size() == 2);
 	std::vector< std::vector<double> > h(2);
 
@@ -76,6 +80,7 @@ double Function3::value(std::vector<double> &x) {
 }
 
 std::vector<double> Function3::gradient_at(std::vector<double> &x) {
+	gradient_called();
 	assert(x.size() == 2);
 	std::vector<double> result(2);
 
@@ -87,6 +92,7 @@ std::vector<double> Function3::gradient_at(std::vector<double> &x) {
 }
 
 std::vector< std::vector<double> > Function3::hessian_at(std::vector<double> x) {
+	hessian_called();
 	assert(x.size() == 2);
 	std::vector< std::vector<double> > h(2);
 
@@ -109,6 +115,7 @@ double Function4::value(std::vector<double> &x) {
 }
 
 std::vector<double> Function4::gradient_at(std::vector<double> &x) {
+	gradient_called();
 	assert(x.size() == 2);
 	std::vector<double> result(2);
 
@@ -120,6 +127,7 @@ std::vector<double> Function4::gradient_at(std::vector<double> &x) {
 }
 
 std::vector< std::vector<double> > Function4::hessian_at(std::vector<double> x) {
+	hessian_called();
 	assert(x.size() == 2);
 	std::vector< std::vector<double> > h(2);
 
@@ -141,10 +149,12 @@ double LimitFunction1::value(std::vector<double> &x) {
 }
 
 std::vector<double> LimitFunction1::gradient_at(std::vector<double> &x) {
+	gradient_called();
 	return std::vector<double>(0);
 }
 
 std::vector< std::vector<double> > LimitFunction1::hessian_at(std::vector<double> x) {
+	hessian_called();
 	return std::vector< std::vector<double> >(0);
 }
 
@@ -155,10 +165,12 @@ double LimitFunction2::value(std::vector<double> &x) {
 }
 
 std::vector<double> LimitFunction2::gradient_at(std::vector<double> &x) {
+	gradient_called();
 	return std::vector<double>(0);
 }
 
 std::vector< std::vector<double> > LimitFunction2::hessian_at(std::vector<double> x) {
+	hessian_called();
 	return std::vector< std::vector<double> >(0);
 }
 
@@ -169,10 +181,12 @@ double LimitFunction3::value(std::vector<double> &x) {
 }
 
 std::vector<double> LimitFunction3::gradient_at(std::vector<double> &x) {
+	gradient_called();
 	return std::vector<double>(0);
 }
 
 std::vector< std::vector<double> > LimitFunction3::hessian_at(std::vector<double> x) {
+	hessian_called();
 	return std::vector< std::vector<double> >(0);
 }
 
@@ -183,10 +197,12 @@ double LimitFunction4::value(std::vector<double> &x) {
 }
 
 std::vector<double> LimitFunction4::gradient_at(std::vector<double> &x) {
+	gradient_called();
 	return std::vector<double>(0);
 }
 
 std::vector< std::vector<double> > LimitFunction4::hessian_at(std::vector<double> x) {
+	hessian_called();
 	return std::vector< std::vector<double> >(0);
 }
 
@@ -197,10 +213,12 @@ double LimitFunction5::value(std::vector<double> &x) {
 }
 
 std::vector<double> LimitFunction5::gradient_at(std::vector<double> &x) {
+	gradient_called();
 	return std::vector<double>(0);
 }
 
 std::vector< std::vector<double> > LimitFunction5::hessian_at(std::vector<double> x) {
+	hessian_called();
 	return std::vector< std::vector<double> >(0);
 }
 
@@ -211,10 +229,12 @@ double GLimitFunction::value(std::vector<double> &x) {
 }
 
 std::vector<double> GLimitFunction::gradient_at(std::vector<double> &x) {
+	gradient_called();
 	return std::vector<double>(0);
 }
 
 std::vector< std::vector<double> > GLimitFunction::hessian_at(std::vector<double> x) {
+	hessian_called();
 	return std::vector< std::vector<double> >(0);
 }
 
