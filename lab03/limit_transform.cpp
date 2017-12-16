@@ -146,7 +146,7 @@ int main() {
 	printf("\n");
 
 	// Task 5.
-	LimitFunction3 l3;
+	LimitFunction3 l3; 
 	LimitFunction4 l4;
 	std::vector<Function*> g4;
 	g4.push_back(&l3);

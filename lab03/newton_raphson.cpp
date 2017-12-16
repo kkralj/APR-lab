@@ -220,7 +220,7 @@ std::vector<double> newton_raphson(std::vector<double> point, Function &f, bool 
 	printf("Done after %d iterations.\n", iter);
 	return x;
 }  
-
+ 
 int main(void) {
 	// f1
 	Function1 f1;

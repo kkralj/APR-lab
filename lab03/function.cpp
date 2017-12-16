@@ -1,8 +1,9 @@
 #include "function.h"
 #include <stdio.h>
 #include <math.h>
+#include <limits>
 
-const int INF = 1 << 30;
+const double INF = std::numeric_limits<double>::max();
 
 Function::Function() {
 	calls = 0;
