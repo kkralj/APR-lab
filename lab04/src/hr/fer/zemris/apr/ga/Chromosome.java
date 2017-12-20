@@ -1,6 +1,6 @@
 package hr.fer.zemris.apr.ga;
 
-import hr.fer.zemris.apr.function.Function;
+import hr.fer.zemris.apr.function.IFunction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class Chromosome implements Comparable<Chromosome> {
         return Double.compare(error, chromosome.error);
     }
 
-    public static List<Chromosome> getRandomPopulation(int populationSize, int variableCount, Function function,
+    public static List<Chromosome> getRandomPopulation(int populationSize, int variableCount, IFunction function,
                                                        double lowerLimit, double upperLimit) {
         List<Chromosome> population = new ArrayList<>();
         for (int i = 0; i < populationSize; i++) {

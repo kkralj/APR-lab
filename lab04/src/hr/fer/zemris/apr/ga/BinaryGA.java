@@ -1,18 +1,20 @@
 package hr.fer.zemris.apr.ga;
 
-import hr.fer.zemris.apr.function.Function;
+import hr.fer.zemris.apr.function.IFunction;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import static hr.fer.zemris.apr.ga.GA.getSortedRandomInts;
+
 public class BinaryGA {
     private static final double MIN_ERROR = 1e-6;
 
     private static Random random = new Random();
 
-    private Function function;
+    private IFunction function;
 
     private int iterations;
     private int populationSize;
@@ -26,7 +28,7 @@ public class BinaryGA {
     private int precision;
 
     public BinaryGA(int iterations, int precision, int populationSize, int variableCount, double mutationProbability,
-                    Function function, double lowerBound, double upperBound, int tournamentSize) {
+                    IFunction function, double lowerBound, double upperBound, int tournamentSize) {
 
         this.function = function;
         this.lowerBound = lowerBound;
@@ -48,7 +50,6 @@ public class BinaryGA {
             if (population.get(0).error < MIN_ERROR) break;
 
             List<Integer> kRandoms = getSortedRandomInts(tournamentSize, populationSize);
-
             List<BinaryChromosome> parents = new ArrayList<>();
             for (int i = 0; i < kRandoms.size() - 1; i++) {
                 parents.add(population.get(kRandoms.get(i)));
@@ -56,33 +57,20 @@ public class BinaryGA {
 
             BinaryChromosome newChild = onePointCrossover(parents.get(0), parents.get(1));
             binaryMutate(newChild, mutationProbability);
-            newChild.error = function.valueAt(newChild.getValues());
+            newChild.error = function.valueAt(newChild.getRealValues());
 
             // replace worst child
             int worstIndex = kRandoms.get(kRandoms.size() - 1);
-            population.set(worstIndex, newChild);
+            if (newChild.error < population.get(worstIndex).error) {
+                population.set(worstIndex, newChild);
+            }
         }
 
         Collections.sort(population);
         return population.get(0);
     }
 
-    private List<Integer> getSortedRandomInts(int size, int upperBound) {
-        List<Integer> numbers = new ArrayList<>();
-
-        int rand;
-        for (int i = 0; i < size; i++) {
-            do {
-                rand = random.nextInt(upperBound);
-            } while (numbers.contains(rand));
-            numbers.add(rand);
-        }
-
-        Collections.sort(numbers);
-        return numbers;
-    }
-
-    private void binaryMutate(BinaryChromosome child, double mutationProbability) {
+    public static void binaryMutate(BinaryChromosome child, double mutationProbability) {
         for (int i = 0; i < child.values.length; i++) {
             for (int j = 0; j < child.getBitCount(); j++) {
                 if (random.nextDouble() < mutationProbability) {
@@ -90,6 +78,21 @@ public class BinaryGA {
                 }
             }
         }
+    }
+
+    public static BinaryChromosome uniformCrossover(BinaryChromosome parent1, BinaryChromosome parent2) {
+        String binaryValues1 = parent1.getBinaryValues();
+        String binaryValues2 = parent2.getBinaryValues();
+
+        StringBuilder result = new StringBuilder();
+        int variableCount = parent1.variableCount();
+
+        for (int i = 0; i < binaryValues1.length(); i++) {
+            result.append(random.nextDouble() < 0.5 ? binaryValues1.charAt(i) : binaryValues2.charAt(i));
+        }
+
+        return new BinaryChromosome(BinaryChromosome.convertToIntegers(result.toString(), variableCount),
+                parent1.getBitCount(), parent1.getLowerLimit(), parent1.getUpperLimit());
     }
 
     private BinaryChromosome twoPointCrossover(BinaryChromosome parent1, BinaryChromosome parent2) {
@@ -119,23 +122,9 @@ public class BinaryGA {
         String binaryValues1 = parent1.getBinaryValues();
         String binaryValues2 = parent2.getBinaryValues();
 
-        if (binaryValues1.length() != binaryValues2.length()) {
-            throw new IllegalArgumentException();
-        }
-
-        if (parent1.variableCount() != parent2.variableCount()) {
-            throw new IllegalArgumentException();
-        }
-
-        if (parent1.getBitCount() != parent2.getBitCount()) {
-            throw new IllegalArgumentException();
-        }
-
-        StringBuilder result = new StringBuilder();
-
-        int variableCount = parent1.variableCount();
         int crossPoint = random.nextInt(binaryValues1.length());
 
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < crossPoint; i++) {
             result.append(binaryValues1.charAt(i));
         }
@@ -143,7 +132,13 @@ public class BinaryGA {
             result.append(binaryValues2.charAt(i));
         }
 
-        return new BinaryChromosome(BinaryChromosome.convertToIntegers(result.toString(), variableCount), parent1.getBitCount(),
-                parent1.getLowerLimit(), parent1.getUpperLimit());
+        int variableCount = parent1.variableCount();
+
+        return new BinaryChromosome(
+                BinaryChromosome.convertToIntegers(result.toString(), variableCount),
+                parent1.getBitCount(),
+                parent1.getLowerLimit(),
+                parent1.getUpperLimit()
+        );
     }
 }

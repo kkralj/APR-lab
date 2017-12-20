@@ -1,6 +1,6 @@
 package hr.fer.zemris.apr.ga;
 
-import hr.fer.zemris.apr.function.Function;
+import hr.fer.zemris.apr.function.IFunction;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,7 +13,7 @@ public class GA {
 
     private static Random random = new Random();
 
-    private Function function;
+    private IFunction function;
 
     private int iterations;
     private int populationSize;
@@ -24,8 +24,10 @@ public class GA {
     private double lowerBound;
     private double upperBound;
 
+    private boolean printIterations;
+
     public GA(int iterations, int populationSize, int variableCount, double mutationProbability,
-              Function function, double lowerBound, double upperBound, int tournamentSize) {
+              IFunction function, double lowerBound, double upperBound, int tournamentSize, boolean printIterations) {
 
         this.function = function;
         this.lowerBound = lowerBound;
@@ -34,6 +36,7 @@ public class GA {
         this.variableCount = variableCount;
         this.populationSize = populationSize;
         this.tournamentSize = tournamentSize;
+        this.printIterations = printIterations;
         this.mutationProbability = mutationProbability;
     }
 
@@ -45,6 +48,10 @@ public class GA {
         for (int it = 0; it < iterations; it++) {
             Collections.sort(population);
             if (population.get(0).error < MIN_ERROR) break;
+
+            if (printIterations && it % 1000 == 0) {
+                System.out.println(population.get(0).error);
+            }
 
             List<Integer> kRandoms = getSortedRandomInts(tournamentSize, populationSize);
 
@@ -66,7 +73,7 @@ public class GA {
         return population.get(0);
     }
 
-    private List<Integer> getSortedRandomInts(int size, int upperBound) {
+    public static List<Integer> getSortedRandomInts(int size, int upperBound) {
         List<Integer> numbers = new ArrayList<>();
 
         int rand;
@@ -99,7 +106,6 @@ public class GA {
         for (int i = 0; i < values1.size(); i++) {
             double cmin = Math.min(values1.get(i), values2.get(i));
             double cmax = Math.max(values1.get(i), values2.get(i));
-//            betas[i] = (0.4 + 0.2 * random.nextDouble()) * (b1[i] + b2[i]);
             result.add(cmin + random.nextDouble() * (cmax - cmin));
 
         }
