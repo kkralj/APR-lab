@@ -9,13 +9,13 @@ public class Task2 {
 
         for (int dimension : dimemsions) {
             System.out.println("Dimension: " + dimension);
-            GA f6 = new GA(10_000_000, 40, dimension, 0.2,
+            GA f6 = new GA(5_000_000, 40, dimension, 0.2,
                     Functions.F6, -50, 150, 3);
-            f6.run();
+            System.out.println(f6.run());
 
-            GA f7 = new GA(10_000_000, 40, dimension, 0.2,
+            GA f7 = new GA(5_000_000, 40, dimension, 0.2,
                     Functions.F7, -50, 150, 3);
-            f7.run();
+            System.out.println(f7.run());
         }
     }
 }

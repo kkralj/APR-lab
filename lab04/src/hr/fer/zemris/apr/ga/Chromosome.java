@@ -41,7 +41,6 @@ public class Chromosome implements Comparable<Chromosome> {
     }
 
 
-
     public List<Double> getValues() {
         return values;
     }
