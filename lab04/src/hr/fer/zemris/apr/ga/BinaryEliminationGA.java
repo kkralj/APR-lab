@@ -16,38 +16,28 @@ public class BinaryEliminationGA {
 
     private IFunction function;
 
-    private int iterations;
-    private int populationSize;
-    private int variableCount;
-
-    private double mutationProbability;
-    private double lowerBound;
-    private double upperBound;
-
-    private int precision;
-
-    private int elitism;
-
+    private int iterations, variableCount, populationSize, precision, elitism;
+    private double mutationProbability, lowerBound, upperBound;
     private boolean printIterations;
 
     public BinaryEliminationGA(IFunction function, int iterations, int populationSize, int variableCount,
-                               double mutationProbability, double lowerBound,
-                               double upperBound, int precision, int elitism, boolean printIterations) {
+                               double mutationProbability, double lowerBound, double upperBound, int precision,
+                               int elitism, boolean printIterations) {
+        this.elitism = elitism;
         this.function = function;
+        this.precision = precision;
         this.iterations = iterations;
-        this.populationSize = populationSize;
-        this.variableCount = variableCount;
-        this.mutationProbability = mutationProbability;
         this.lowerBound = lowerBound;
         this.upperBound = upperBound;
+        this.variableCount = variableCount;
+        this.populationSize = populationSize;
         this.printIterations = printIterations;
-        this.precision = precision;
-        this.elitism = elitism;
+        this.mutationProbability = mutationProbability;
     }
 
     public BinaryChromosome run() {
-        List<BinaryChromosome> population = BinaryChromosome.getPopulation(
-                populationSize, variableCount, precision, function, lowerBound, upperBound);
+        List<BinaryChromosome> population = BinaryChromosome.getPopulation(populationSize, variableCount,
+                precision, function, lowerBound, upperBound);
 
         for (int generation = 1; generation <= iterations; generation++) {
             Collections.sort(population);
@@ -78,11 +68,11 @@ public class BinaryEliminationGA {
         return population.get(0);
     }
 
-    public static BinaryChromosome uniformCrossover(BinaryChromosome parent1, BinaryChromosome parent2) {
+    private static BinaryChromosome uniformCrossover(BinaryChromosome parent1, BinaryChromosome parent2) {
         int[] values1 = parent1.values;
         int[] values2 = parent2.values;
 
-       int[] result = new int[values1.length];
+        int[] result = new int[values1.length];
 
         for (int i = 0; i < values1.length; i++) {
             int cmin = Math.min(values1[i], values2[i]);

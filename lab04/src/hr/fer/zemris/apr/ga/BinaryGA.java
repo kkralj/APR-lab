@@ -16,29 +16,23 @@ public class BinaryGA {
 
     private IFunction function;
 
-    private int iterations;
-    private int populationSize;
-    private int variableCount;
-    private int tournamentSize;
+    private int iterations, variableCount, populationSize, tournamentSize, precision;
+    private double mutationProbability, lowerBound, upperBound;
+    private boolean printIterations;
 
-    private double mutationProbability;
-    private double lowerBound;
-    private double upperBound;
-
-    private int precision;
-
-    public BinaryGA(int iterations, int precision, int populationSize, int variableCount, double mutationProbability,
-                    IFunction function, double lowerBound, double upperBound, int tournamentSize) {
-
+    public BinaryGA(int iterations, int precision, int populationSize, int variableCount,
+                    double mutationProbability, IFunction function, double lowerBound, double upperBound,
+                    int tournamentSize, boolean printIterations) {
         this.function = function;
+        this.precision = precision;
         this.lowerBound = lowerBound;
         this.upperBound = upperBound;
         this.iterations = iterations;
         this.variableCount = variableCount;
-        this.populationSize = populationSize;
         this.tournamentSize = tournamentSize;
+        this.populationSize = populationSize;
+        this.printIterations = printIterations;
         this.mutationProbability = mutationProbability;
-        this.precision = precision;
     }
 
     public BinaryChromosome run() {
@@ -48,6 +42,10 @@ public class BinaryGA {
         for (int it = 0; it < iterations; it++) {
             Collections.sort(population);
             if (population.get(0).error < MIN_ERROR) break;
+
+            if (printIterations && it % 1000 == 0) {
+                System.out.println(population.get(0).error);
+            }
 
             List<Integer> kRandoms = getSortedRandomInts(tournamentSize, populationSize);
             List<BinaryChromosome> parents = new ArrayList<>();

@@ -48,7 +48,7 @@ public class Task4 {
 //        for (int iter = 0; iter < ITERATIONS; iter++) {
 //            for (int i = 0; i < populations.length; i++) {
 //                BinaryGA ga = new BinaryGA(100_000, 4, populations[i], 6,
-//                        0.3, Functions.F6, -50, 150, 3);
+//                        0.3, Functions.F6, -50, 150, 3, false);
 //                System.out.print(ga.run().error + ((i != populations.length - 1) ? ", " : " "));
 //            }
 //            System.out.println();
@@ -61,7 +61,7 @@ public class Task4 {
 //        for (int iter = 0; iter < ITERATIONS; iter++) {
 //            for (int i = 0; i < mutations.length; i++) {
 //                BinaryGA ga = new BinaryGA(100_000, 4, 200, 6,
-//                        mutations[i], Functions.F6, -50, 150, 3);
+//                        mutations[i], Functions.F6, -50, 150, 3, false);
 //                System.out.print(ga.run().error + ((i != mutations.length - 1) ? ", " : " "));
 //            }
 //            System.out.println();

@@ -6,7 +6,6 @@ import hr.fer.zemris.apr.ga.BinaryEliminationGA;
 import hr.fer.zemris.apr.ga.BinaryGA;
 import hr.fer.zemris.apr.ga.GA;
 
-
 public class Task3 {
     public static void main(String[] args) {
         IFunction[] functions = new IFunction[]{Functions.F6, Functions.F7};
@@ -21,7 +20,7 @@ public class Task3 {
                 System.out.println(bga.run());
 
                 BinaryGA bga2 = new BinaryGA(100_000, 4, 50, dimension,
-                        0.2, f, -50, 150, 3);
+                        0.2, f, -50, 150, 3, false);
                 System.out.println(bga2.run());
 
                 System.out.println("Double precision GA");

@@ -15,20 +15,13 @@ public class GA {
 
     private IFunction function;
 
-    private int iterations;
-    private int populationSize;
-    private int variableCount;
-    private int tournamentSize;
-
-    private double mutationProbability;
-    private double lowerBound;
-    private double upperBound;
-
+    private int iterations, variableCount, populationSize, tournamentSize;
+    private double mutationProbability, lowerBound, upperBound;
     private boolean printIterations;
 
     public GA(int iterations, int populationSize, int variableCount, double mutationProbability,
-              IFunction function, double lowerBound, double upperBound, int tournamentSize, boolean printIterations) {
-
+              IFunction function, double lowerBound, double upperBound, int tournamentSize,
+              boolean printIterations) {
         this.function = function;
         this.lowerBound = lowerBound;
         this.upperBound = upperBound;
@@ -54,7 +47,6 @@ public class GA {
             }
 
             List<Integer> kRandoms = getSortedRandomInts(tournamentSize, populationSize);
-
             List<Chromosome> parents = new ArrayList<>();
             for (int i = 0; i < kRandoms.size() - 1; i++) {
                 parents.add(population.get(kRandoms.get(i)));
