@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dbcfc800-4516-4bd1-82e9-114c059cf2d1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/hr/fer/zemris/apr/demo/Task3.java" afterPath="$PROJECT_DIR$/src/hr/fer/zemris/apr/demo/Task3.java" />
-      <change beforePath="$PROJECT_DIR$/src/hr/fer/zemris/apr/demo/Task4.java" afterPath="$PROJECT_DIR$/src/hr/fer/zemris/apr/demo/Task4.java" />
-      <change beforePath="$PROJECT_DIR$/src/hr/fer/zemris/apr/ga/BinaryEliminationGA.java" afterPath="$PROJECT_DIR$/src/hr/fer/zemris/apr/ga/BinaryEliminationGA.java" />
-      <change beforePath="$PROJECT_DIR$/src/hr/fer/zemris/apr/ga/BinaryGA.java" afterPath="$PROJECT_DIR$/src/hr/fer/zemris/apr/ga/BinaryGA.java" />
-      <change beforePath="$PROJECT_DIR$/src/hr/fer/zemris/apr/ga/GA.java" afterPath="$PROJECT_DIR$/src/hr/fer/zemris/apr/ga/GA.java" />
-    </list>
+    <list default="true" id="dbcfc800-4516-4bd1-82e9-114c059cf2d1" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -407,16 +400,15 @@
       <workItem from="1513696016816" duration="4907000" />
       <workItem from="1513714826843" duration="5477000" />
       <workItem from="1513735217204" duration="4689000" />
-      <workItem from="1513773996590" duration="22477000" />
+      <workItem from="1513773996590" duration="22519000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55873000" />
+    <option name="totallyTimeSpent" value="55915000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1057" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -431,7 +423,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2721925" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2721925" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
