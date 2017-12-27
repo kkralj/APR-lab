@@ -5,9 +5,9 @@ import hr.fer.zemris.apr.ga.GA;
 
 public class Task2 {
     public static void main(String[] args) {
-        int[] dimemsions = new int[]{1, 3, 6, 10, 20};
+        int[] dimensions = new int[]{1, 3, 6, 10, 20};
 
-        for (int dimension : dimemsions) {
+        for (int dimension : dimensions) {
             System.out.println("Dimension: " + dimension);
 
             GA f6 = new GA(100_000, 200, dimension, 0.3,
