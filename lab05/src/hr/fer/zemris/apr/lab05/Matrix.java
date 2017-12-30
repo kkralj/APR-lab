@@ -77,6 +77,14 @@ public class Matrix {
         return new Matrix(m);
     }
 
+    public static Matrix getIdentity(int size) {
+        double[][] result = new double[size][size];
+        for (int i = 0; i < size; i++) {
+            result[i][i] = 1;
+        }
+        return new Matrix(result);
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -89,4 +97,57 @@ public class Matrix {
         }
         return sb.toString();
     }
+
+    public Matrix add(double v) {
+        Matrix result = getCopy();
+        for (int i = 0; i < getRows(); i++) {
+            for (int j = 0; j < getColumns(); j++) {
+                result.matrix[i][j] += v;
+            }
+        }
+        return result;
+    }
+
+    public Matrix add(Matrix other) {
+        if (getRows() != other.getRows() || getColumns() != other.getColumns()) {
+            throw new IllegalArgumentException("Matrices are not compatible.");
+        }
+
+        Matrix result = getCopy();
+        for (int i = 0; i < getRows(); i++) {
+            for (int j = 0; j < getColumns(); j++) {
+                result.matrix[i][j] += other.matrix[i][j];
+            }
+        }
+
+        return result;
+    }
+
+    public Matrix multiply(double v) {
+        Matrix result = getCopy();
+        for (int i = 0; i < getRows(); i++) {
+            for (int j = 0; j < getColumns(); j++) {
+                result.matrix[i][j] *= v;
+            }
+        }
+        return result;
+    }
+
+    public Matrix subtract(Matrix other) {
+        if (getRows() != other.getRows() || getColumns() != other.getColumns()) {
+            throw new IllegalArgumentException("Matrices are not compatible.");
+        }
+
+        Matrix result = getCopy();
+        for (int i = 0; i < getRows(); i++) {
+            for (int j = 0; j < getColumns(); j++) {
+                result.matrix[i][j] -= other.matrix[i][j];
+            }
+        }
+
+        return result;
+    }
+
+
+
 }
