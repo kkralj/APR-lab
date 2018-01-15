@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8391fb17-bb0b-4128-a905-6fd8eada7458" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/hr/fer/zemris/apr/lab05/Util.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/hr/fer/zemris/apr/lab05/demo/Task3.java" afterPath="$PROJECT_DIR$/src/hr/fer/zemris/apr/lab05/demo/Task3.java" />
-      <change beforePath="$PROJECT_DIR$/src/hr/fer/zemris/apr/lab05/demo/Task4.java" afterPath="$PROJECT_DIR$/src/hr/fer/zemris/apr/lab05/demo/Task4.java" />
-      <change beforePath="$PROJECT_DIR$/src/hr/fer/zemris/apr/lab05/matrix/Matrix.java" afterPath="$PROJECT_DIR$/src/hr/fer/zemris/apr/lab05/matrix/Matrix.java" />
-    </list>
+    <list default="true" id="8391fb17-bb0b-4128-a905-6fd8eada7458" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -96,6 +90,11 @@
             <path>
               <item name="lab05" type="b2602c69:ProjectViewProjectNode" />
               <item name="lab05" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lab05" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lab05" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lab05" type="b2602c69:ProjectViewProjectNode" />
@@ -338,12 +337,12 @@
       <workItem from="1514592004441" duration="9387000" />
       <workItem from="1515867963352" duration="1022000" />
       <workItem from="1515930337138" duration="5387000" />
-      <workItem from="1515975502012" duration="5712000" />
+      <workItem from="1515975502012" duration="6641000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32912000" />
+    <option name="totallyTimeSpent" value="33841000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1057" extended-state="6" />
@@ -403,7 +402,7 @@
         <state relative-caret-position="396">
           <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -473,7 +472,7 @@
         <state relative-caret-position="126">
           <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -516,7 +515,7 @@
         <state relative-caret-position="252">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -526,7 +525,7 @@
         <state relative-caret-position="432">
           <caret line="24" column="61" lean-forward="true" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -536,7 +535,7 @@
         <state relative-caret-position="306">
           <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
