@@ -1,9 +1,10 @@
-package hr.fer.zemris.apr.lab05;
+package hr.fer.zemris.apr.lab05.matrix;
 
 public class Matrix {
+
     private double[][] matrix;
 
-    public Matrix(int i, int size) {
+    private Matrix(int i, int size) {
         this.matrix = new double[size][1];
         matrix[i][0] = 1;
     }
@@ -85,29 +86,6 @@ public class Matrix {
         return new Matrix(result);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (double[] row : matrix) {
-            sb.append("[ ");
-            for (double el : row) {
-                sb.append(String.format("%8f ", el));
-            }
-            sb.append("]\n");
-        }
-        return sb.toString();
-    }
-
-    public Matrix add(double v) {
-        Matrix result = getCopy();
-        for (int i = 0; i < getRows(); i++) {
-            for (int j = 0; j < getColumns(); j++) {
-                result.matrix[i][j] += v;
-            }
-        }
-        return result;
-    }
-
     public Matrix add(Matrix other) {
         if (getRows() != other.getRows() || getColumns() != other.getColumns()) {
             throw new IllegalArgumentException("Matrices are not compatible.");
@@ -125,11 +103,13 @@ public class Matrix {
 
     public Matrix multiply(double v) {
         Matrix result = getCopy();
+
         for (int i = 0; i < getRows(); i++) {
             for (int j = 0; j < getColumns(); j++) {
                 result.matrix[i][j] *= v;
             }
         }
+
         return result;
     }
 
@@ -148,6 +128,17 @@ public class Matrix {
         return result;
     }
 
-
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (double[] row : matrix) {
+            sb.append("[ ");
+            for (double el : row) {
+                sb.append(el).append(" ");
+            }
+            sb.append("]\n");
+        }
+        return sb.toString();
+    }
 
 }

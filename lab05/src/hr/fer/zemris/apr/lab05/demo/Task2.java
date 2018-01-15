@@ -1,6 +1,6 @@
 package hr.fer.zemris.apr.lab05.demo;
 
-import hr.fer.zemris.apr.lab05.Matrix;
+import hr.fer.zemris.apr.lab05.matrix.Matrix;
 
 public class Task2 {
     public static void main(String[] args) {

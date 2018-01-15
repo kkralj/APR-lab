@@ -1,4 +1,4 @@
-package hr.fer.zemris.apr.lab05;
+package hr.fer.zemris.apr.lab05.matrix;
 
 public class LUPSolver {
 
@@ -6,7 +6,7 @@ public class LUPSolver {
     private double[][] positions;
     private int n;
 
-    public LUPSolver(Matrix matrix) {
+    LUPSolver(Matrix matrix) {
         if (matrix.getRows() != matrix.getColumns()) {
             throw new IllegalArgumentException("Can't decompose this matrix.");
         }
