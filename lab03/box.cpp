@@ -161,16 +161,16 @@ int main(void) {
 	std::vector<double> xd(2, -100);
 	std::vector<double> xg(2, 100);
 
-    std::vector<double> sol = box(x1, xd, xg, implicit_limits, f1);
-    print(sol);
+    	std::vector<double> sol = box(x1, xd, xg, implicit_limits, f1);
+    	print(sol);
 
 	// f2
 	Function2 f2;
 	std::vector<double> x2;
 	x2.push_back(0.1);
 	x2.push_back(0.3);
-    sol = box(x2, xd, xg, implicit_limits, f2);
-    print(sol);
+    	sol = box(x2, xd, xg, implicit_limits, f2);
+    	print(sol);
 
 	return 0;
 }
