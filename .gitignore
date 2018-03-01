@@ -1,7 +1,15 @@
+lab01/.idea
 lab02/a.out
-lab04/out/
 lab03/box
 lab03/gradient_descent
 lab03/limit_transform
 lab03/newton_raphson
+lab03/box
+lab03/gradient_descent
+lab03/limit_transform
+lab03/newton_raphson
+lab04/out/
+lab04/.idea
+lab05/.idea
 lab05/out/
+*.iml

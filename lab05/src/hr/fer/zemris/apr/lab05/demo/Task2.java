@@ -10,6 +10,7 @@ public class Task2 {
                 {-8, 9, 3}
         });
 
+        System.out.println(m);
         System.out.println(m.getInverse());
         System.out.println(m.multiply(m.getInverse()));
 

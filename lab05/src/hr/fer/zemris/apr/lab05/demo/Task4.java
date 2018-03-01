@@ -32,13 +32,13 @@ public class Task4 {
 
         System.out.println("runge-kutta-unstable");
         List<Matrix> result = rungeKutta.calculate(A, B, x0, 0.1, 10);
-        Util.writeResults(result, "data/task4-runge-kutta-unstable.txt");
-        Util.print(result, 100);
-
-        System.out.println("trapezni-unstable");
-        result = trapezni.calculate(A, B, x0, 0.1, 10);
-        Util.writeResults(result, "data/task4-trapezni-unstable.txt");
-        Util.print(result, 100);
+//        Util.writeResults(result, "data/task4-runge-kutta-unstable.txt");
+//        Util.print(result, 100);
+//
+//        System.out.println("trapezni-unstable");
+//        result = trapezni.calculate(A, B, x0, 0.1, 10);
+//        Util.writeResults(result, "data/task4-trapezni-unstable.txt");
+//        Util.print(result, 100);
 
         System.out.println("runge-kutta");
         result = rungeKutta.calculate(A, B, x0, 0.025, 10);

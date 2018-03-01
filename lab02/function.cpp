@@ -1,8 +1,8 @@
 #include "function.h"
 #include <stdio.h>
+
 Function::Function() {
-	calls = 0;
-	bias = 0;
+	calls = bias = 0;
 }
 
 double Function::value_at(double x) {
