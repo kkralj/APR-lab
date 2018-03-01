@@ -1,6 +1,6 @@
-Laboratory exercises for *Computer Aided Analysis and Design* course.
+Laboratory assignments for *Computer Aided Analysis and Design* course.
 
-### Exercises ###
+### Assignments ###
 1. lab - LU/LUP matrix decomposition
 2. lab - Golden section, Coordinate descent, Nelder-Mead Simplex, Hooke-Jeaves
 3. lab - Gradient descent, Newthon-Raphson, Box method, transformations
